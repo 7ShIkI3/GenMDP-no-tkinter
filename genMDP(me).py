@@ -3,6 +3,7 @@ import random
 import re
 import os
 import platform
+import getpass
 
 def get_os():
     system = platform.system()
@@ -33,6 +34,55 @@ def affichage():
     saut_de_ligne()
     bar()
     saut_de_ligne()
+
+def CheckMdp(mdp: str):
+    password = mdp
+    strength = 0
+    remarks = ''
+    lower_count = upper_count = num_count = wspace_count = special_count = 0
+
+    for char in list(password):
+        if char in string.ascii_lowercase:
+            lower_count += 1
+        elif char in string.ascii_uppercase:
+            upper_count += 1
+        elif char in string.digits:
+            num_count += 1
+        elif char == ' ':
+            wspace_count += 1
+        else:
+            special_count += 1
+
+    if lower_count >= 1:
+        strength += 1
+    if upper_count >= 1:
+        strength += 1
+    if num_count >= 1:
+        strength += 1
+    if wspace_count >= 1:
+        strength += 1
+    if special_count >= 1:
+        strength += 1
+
+    if strength == 1:
+        remarks = "C'est un mot de passe très faible. Changez-le dès que possible."
+    elif strength == 2:
+        remarks = "C'est un mot de passe faible. Vous devriez envisager d'utiliser un mot de passe plus fort."
+    elif strength == 3:
+        remarks = "Votre mot de passe est correct, mais il peut être amélioré."
+    elif strength == 4:
+        remarks = "Votre mot de passe est difficile à deviner, mais vous pourriez le rendre encore plus sécurisé."
+    elif strength == 5:
+        remarks = "C'est un mot de passe extrêmement fort ! Les hackers n'ont aucune chance de deviner ce mot de passe !"
+
+    print("Votre mot de passe contient : ")
+    print(f"{lower_count} lettres minuscules")
+    print(f"{upper_count} lettres majuscules")
+    print(f"{num_count} chiffres")
+    print(f"{wspace_count} espaces")
+    print(f"{special_count} caractères spéciaux")
+    print(f"Indice de force du mot de passe : {strength / 5}")
+    print(f"Remarques : {remarks}")
 
 affichage()
 print("Your OS : ",device)
@@ -80,7 +130,9 @@ def genMDP():
                 print("your device is not compatible")
                 break
                 
-    saut_de_ligne()
+    affichage()
+    CheckMdp(mot_de_passe)
+    affichage()
     
     new = str(input("Generer un nouveau MDP [A] : "))
 
