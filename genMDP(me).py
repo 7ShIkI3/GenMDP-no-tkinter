@@ -3,7 +3,6 @@ import random
 import re
 import os
 import platform
-import getpass
 
 def get_os():
     system = platform.system()
@@ -38,7 +37,7 @@ def affichage():
 def CheckMdp(mdp: str):
     password = mdp
     strength = 0
-    remarks = ''
+    remarks = ""
     lower_count = upper_count = num_count = wspace_count = special_count = 0
 
     for char in list(password):
@@ -76,11 +75,7 @@ def CheckMdp(mdp: str):
         remarks = "C'est un mot de passe extrêmement fort ! Les hackers n'ont aucune chance de deviner ce mot de passe !"
 
     print("Votre mot de passe contient : ")
-    print(f"{lower_count} lettres minuscules")
-    print(f"{upper_count} lettres majuscules")
-    print(f"{num_count} chiffres")
-    print(f"{wspace_count} espaces")
-    print(f"{special_count} caractères spéciaux")
+    print(f"{lower_count} lettres minuscules", f"{upper_count} lettres majuscules", f"{num_count} chiffres", f"{wspace_count} espaces", f"{special_count} caractères spéciaux")
     print(f"Indice de force du mot de passe : {strength / 5}")
     print(f"Remarques : {remarks}")
 
