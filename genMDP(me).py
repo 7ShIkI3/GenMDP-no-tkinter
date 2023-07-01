@@ -4,6 +4,10 @@ import re
 import os
 import platform
 
+def lancer():
+    if __name__ == "__main__":
+        main()
+
 def get_os():
     system = platform.system()
     if system == "Windows":
@@ -33,6 +37,10 @@ def affichage():
     saut_de_ligne()
     bar()
     saut_de_ligne()
+
+def TestMdp(mdp:str):
+    pass
+
 
 def CheckMdp(mdp: str):
     password = mdp
@@ -79,8 +87,13 @@ def CheckMdp(mdp: str):
     print(f"Indice de force du mot de passe : {strength / 5}")
     print(f"Remarques : {remarks}")
 
-affichage()
-print("Your OS : ",device)
+    affichage()
+
+    new = str(input("Tester un nouveau MDP [A] : "))
+    if new == "A":
+        CheckMdp()
+    else:
+        main()
 
 # Fonction pour générer le mot de passe
 # Regex qui a pour condition 2 lettres minuscules, 2 lettres majuscules, 2 chiffres et 2 caractères spéciaux
@@ -124,16 +137,36 @@ def genMDP():
             else:
                 print("your device is not compatible")
                 break
-                
+           
     affichage()
     CheckMdp(mot_de_passe)
     affichage()
     
     new = str(input("Generer un nouveau MDP [A] : "))
-
     if new == "A":
         genMDP()
-    else :
-        close()
+    else:
+        main()
 
-genMDP()
+#fonction principale
+def main():
+    affichage()
+    print("Your OS : ",device)
+    affichage()
+    print("[A] Génerate Passeword")
+    print("[B] Teste Passeword")
+    print("[X] Exit")
+
+    choice = str(input("> "))
+    if choice == "A":
+        genMDP()
+    elif choice == "B":
+        mdp = str(input("MDP a tester : "))
+        saut_de_ligne()
+        CheckMdp(mdp)
+    else:
+        while choice != "X":
+            main()
+        exit()
+#execute le programme
+lancer()
