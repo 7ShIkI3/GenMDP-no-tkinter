@@ -122,18 +122,22 @@ def genMDP():
                 try:
                     with open("Mdp_Historique\mdp.txt", "a") as f:
                         f.write(f"{site}: {mot_de_passe}\n")
+                        f.close()
                 except:
                     os.mkdir('Mdp_Historique')
                     with open("Mdp_Historique\mdp.txt", "a") as f:
                         f.write(f"{site}: {mot_de_passe}\n")
+                        f.close()
             elif device == "Linux" or device == "Mac":
                 try:
                     with open("Mdp_Historique/mdp.txt", "a") as f:
                         f.write(f"{site}: {mot_de_passe}\n")
+                        f.close()
                 except:
                     os.mkdir('Mdp_Historique')
                     with open("Mdp_Historique/mdp.txt", "a") as f:
                         f.write(f"{site}: {mot_de_passe}\n")
+                        f.close()
             else:
                 print("your device is not compatible")
                 break
