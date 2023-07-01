@@ -85,7 +85,7 @@ print("Your OS : ",device)
 # Fonction pour générer le mot de passe
 # Regex qui a pour condition 2 lettres minuscules, 2 lettres majuscules, 2 chiffres et 2 caractères spéciaux
 def genMDP():
-    regex = r"^(?=.*[a-z]{2})(?=.*[A-Z]{2})(?=.*\d{2})(?=.*[!@#$%^&*()_+\-={}\[\]|\\:;\"'<>,.?/]).{8,}$"
+    regex = r"^(?=.*[a-z]{2})(?=.*[A-Z]{2})(?=.*\d{2})(?=.*[!@#$%^&*()_+\-={}\[\]|\\:;\"'<>,.?/])(?=.*\s).{8,}$"
 
     mot_de_passe_valide = False
 
@@ -95,7 +95,7 @@ def genMDP():
         lettres = string.ascii_letters
         chiffres = string.digits
         caracteres_speciaux = string.punctuation
-        code = lettres + chiffres + caracteres_speciaux
+        code = lettres + chiffres + caracteres_speciaux + " "
         mot_de_passe = ''.join(random.choice(code) for _ in range(longueur))
 
         if re.match(regex, mot_de_passe):
