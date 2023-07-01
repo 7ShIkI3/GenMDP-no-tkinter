@@ -87,13 +87,6 @@ def CheckMdp(mdp: str):
     print(f"Indice de force du mot de passe : {strength / 5}")
     print(f"Remarques : {remarks}")
 
-    affichage()
-
-    new = str(input("Tester un nouveau MDP [A] : "))
-    if new == "A":
-        CheckMdp()
-    else:
-        main()
 
 # Fonction pour générer le mot de passe
 # Regex qui a pour condition 2 lettres minuscules, 2 lettres majuscules, 2 chiffres et 2 caractères spéciaux
@@ -122,22 +115,18 @@ def genMDP():
                 try:
                     with open("Mdp_Historique\mdp.txt", "a") as f:
                         f.write(f"{site}: {mot_de_passe}\n")
-                        f.close()
                 except:
                     os.mkdir('Mdp_Historique')
                     with open("Mdp_Historique\mdp.txt", "a") as f:
                         f.write(f"{site}: {mot_de_passe}\n")
-                        f.close()
             elif device == "Linux" or device == "Mac":
                 try:
                     with open("Mdp_Historique/mdp.txt", "a") as f:
                         f.write(f"{site}: {mot_de_passe}\n")
-                        f.close()
                 except:
                     os.mkdir('Mdp_Historique')
                     with open("Mdp_Historique/mdp.txt", "a") as f:
                         f.write(f"{site}: {mot_de_passe}\n")
-                        f.close()
             else:
                 print("your device is not compatible")
                 break
