@@ -38,10 +38,6 @@ def affichage():
     bar()
     saut_de_ligne()
 
-def TestMdp(mdp:str):
-    pass
-
-
 def CheckMdp(mdp: str):
     password = mdp
     strength = 0
@@ -86,7 +82,20 @@ def CheckMdp(mdp: str):
     print(f"{lower_count} lettres minuscules", f"{upper_count} lettres majuscules", f"{num_count} chiffres", f"{wspace_count} espaces", f"{special_count} caractères spéciaux")
     print(f"Indice de force du mot de passe : {strength / 5}")
     print(f"Remarques : {remarks}")
+    input()
 
+#fonction qui sert a tester un mots de passe
+def verifyMDP():
+    affichage()
+    mdp = str(input("Mots de passe : "))
+    saut_de_ligne()
+    CheckMdp(mdp)
+    saut_de_ligne()
+    new = str(input("Tester un nouveau MDP [A] : "))
+    if new == "A":
+        verifyMDP()
+    else:
+        main()
 
 # Fonction pour générer le mot de passe
 # Regex qui a pour condition 2 lettres minuscules, 2 lettres majuscules, 2 chiffres et 2 caractères spéciaux
@@ -154,9 +163,7 @@ def main():
     if choice == "A":
         genMDP()
     elif choice == "B":
-        mdp = str(input("MDP a tester : "))
-        saut_de_ligne()
-        CheckMdp(mdp)
+        verifyMDP()
     else:
         while choice != "X":
             main()
