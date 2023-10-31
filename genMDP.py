@@ -168,5 +168,43 @@ def main():
         while choice != "X":
             main()
         exit()
+"""
+class Os:
+    @staticmethod
+    def get_os():
+        system = platform.system()
+        if system == "Windows":
+            return "Windows"
+        elif system == "Darwin":
+            return "Mac"
+        elif system == "Linux":
+            return "Linux"
+        else:
+            return "Système d'exploitation inconnu"
+
+class Parametre:
+    @staticmethod
+    def close():
+        exit(0)
+        
+    @staticmethod
+    def saut_de_ligne():
+        print()
+    
+    @staticmethod
+    def bar():
+        print("_"*80)
+    
+    @staticmethod  
+    def affichage():
+        saut_de_ligne()
+        bar()
+        saut_de_ligne()
+
+
+class Application:
+    def __init__(self) -> None:
+        pass
+"""
 #execute le programme
 lancer()
